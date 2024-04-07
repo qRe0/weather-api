@@ -11,6 +11,7 @@ var port = 8080
 
 func main() {
 	e := echo.New()
+	e.Static("/static", "client-part")
 
 	e.GET("/weather/:city", h.ResponseHandler)
 
