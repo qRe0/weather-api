@@ -36,36 +36,26 @@
 <div id="cityContainer">
     <div id="cityContent">
         <div id="city"
-             style="color: black; font-size: 4vw; font-family: Comfortaa, serif; font-weight: 400; margin-top: 10%; margin-bottom: 5%;">
+             style="color: black; font-size: calc(3vw + 1vmin); font-family: Comfortaa, serif; font-weight: 400; margin-top: 10%; margin-bottom: 5%;">
             city
         </div>
         <div style="color: black; font-size: 3vw; font-family: Comfortaa, serif; font-weight: 400; margin-bottom: 2%;">
             Temperature:
         </div>
         <div id="temperature"
-             style="color: black; font-size: 2.5vw; font-family: Comfortaa, serif; font-weight: 400; margin-bottom: 5%;">
+             style="color: black; font-size: calc(2.5vw + 1vmin); font-family: Comfortaa, serif; font-weight: 400; margin-bottom: 5%;">
             temp
         </div>
         <div style="color: black; font-size: 3vw; font-family: Comfortaa, serif; font-weight: 400; margin-bottom: 2%;">
             Weather:
         </div>
         <div id="weatherDescription"
-             style="color: black; font-size: 2.5vw; font-family: Comfortaa, serif; font-weight: 400; margin-bottom: 5%;">
-            descr
+             style="color: black; font-size: calc(2.5vw + 1vmin); font-family: Comfortaa, serif; font-weight: 400; margin-bottom: 5%;">
+            data
         </div>
     </div>
 </div>
 
-<script>
-    var city = "";
-    var temperature = 1.0;
-    var weatherDescription = "";
-
-    temperature = temperature.toFixed(1);
-
-    document.getElementById("city").innerText = decodeURIComponent(city);
-    document.getElementById("temperature").innerText = temperature;
-    document.getElementById("weatherDescription").innerText = weatherDescription;
-</script>
+<script src="script.js"></script>
 </body>
 </html>
