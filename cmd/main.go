@@ -19,5 +19,4 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error starting server on port %d: %s", port, err)
 	}
-
 }
