@@ -13,7 +13,6 @@ func LoadApiKey(filename string) (apid.ApiConfigData, error) {
 	}
 
 	var data apid.ApiConfigData
-
 	err = json.Unmarshal(bytes, &data)
 	if err != nil {
 		return apid.ApiConfigData{}, err
