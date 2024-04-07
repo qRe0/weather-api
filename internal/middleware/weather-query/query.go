@@ -5,6 +5,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"net/url"
 	load "weather-api/internal/api/api-key-loader"
 	ws "weather-api/internal/weather/weather-struct"
 )
@@ -15,7 +16,9 @@ func Query(city string) (ws.WeatherData, error) {
 		return ws.WeatherData{}, err
 	}
 
-	resp, err := http.Get("https://api.openweathermap.org/data/2.5/weather?APPID=" + ApiConfig.ApiKey + "&q=" + city)
+	encodedCity := url.QueryEscape(city)
+
+	resp, err := http.Get("https://api.openweathermap.org/data/2.5/weather?APPID=" + ApiConfig.ApiKey + "&q=" + encodedCity)
 	if err != nil {
 		return ws.WeatherData{}, err
 	}

@@ -23,8 +23,11 @@ func ResponseHandler(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 	}
 
+	data.City = strings.ReplaceAll(data.City, " ", "_")
+	data.City = strings.ReplaceAll(data.City, ".", "")
+
 	modFile := strings.ReplaceAll(string(baseFile), "city", data.City)
-	modFile = strings.ReplaceAll(modFile, "temp", fmt.Sprintf("%.2f", data.Main.Temperature))
+	modFile = strings.ReplaceAll(modFile, "temp", fmt.Sprintf("%.1f", data.Main.Temperature))
 	modFile = strings.ReplaceAll(modFile, "descr", data.Weather[0].Description)
 
 	modFile = strings.ReplaceAll(modFile, "bg.jpeg", "/static/bg.jpeg")
