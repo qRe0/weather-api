@@ -34,6 +34,7 @@ func ResponseHandler(c echo.Context) error {
 	modFile := strings.ReplaceAll(string(baseFile), "city", data.City)
 	modFile = strings.ReplaceAll(modFile, "temp", fmt.Sprintf("%.1f", data.Main.Temperature))
 	modFile = strings.ReplaceAll(modFile, "data", data.Weather[0].Description)
+	modFile = strings.ReplaceAll(modFile, "icon", data.Weather[0].Icon) // Добавлено для вывода иконки
 
 	modFile = strings.ReplaceAll(modFile, "bg.jpeg", "/static/bg.jpeg")
 
