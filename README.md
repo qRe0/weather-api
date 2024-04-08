@@ -15,6 +15,7 @@ weather-api
 ├── client-part
 │   ├── bg.jpeg
 │   └── index.html
+│   └── script.js
 ├── cmd
 │   └── main.go
 ├── internal

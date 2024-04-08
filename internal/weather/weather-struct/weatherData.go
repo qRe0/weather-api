@@ -2,6 +2,7 @@ package weather_struct
 
 type Weather struct {
 	Description string `json:"description"`
+	Icon        string `json:"icon"`
 }
 
 type WeatherData struct {

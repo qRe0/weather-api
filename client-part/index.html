@@ -2,13 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Weather Forecast</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400&display=swap');
+        css
+
+
+        Copy code
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Comfortaa', cursive;
+        }
 
         #cityContainer {
-            width: 100vw;
+            width: 100%;
             height: 100vh;
             background-image: url('bg.jpeg');
             background-size: cover;
@@ -19,43 +30,108 @@
         }
 
         #cityContent {
-            width: 50%;
-            height: 80%;
+            width: 45%;
+            height: 75%;
             background: #fff3e2;
             border: 2px solid #000000;
-            border-radius: 50px;
+            border-radius: 150px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
+
+        .weather-info {
+            color: black;
+            font-size: clamp(1.5rem, 2.7vw + 1vmin, 3rem);
+            font-weight: 400;
+            margin: 2% 0;
+            font-family: 'Comfortaa', cursive;
+        }
+
+        .weather-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        #temperature::after {
+            content: "°C";
+            font-family: 'Comfortaa', cursive;
+            font-size: clamp(1.5rem, 2.7vw + 1vmin, 3rem);
+            font-weight: 400;
+            margin-left: 0.2em;
+        }
+
+        #weatherIcon {
+            width: 80px;
+            height: 80px;
+        }
+
+        @media (max-width: 768px) {
+            #cityContent {
+                border-radius: 125px;
+                width: 80%;
+                height: 50%;
+            }
+
+            .weather-info {
+                font-size: clamp(1.3rem, 1.3vw + 1vmin, 1.8rem);
+            }
+
+            #weatherIcon {
+                width: 40px;
+                height: 40px;
+            }
+        }
     </style>
 </head>
 <body>
 <div id="cityContainer">
     <div id="cityContent">
-        <div id="city"
-             style="color: black; font-size: calc(3vw + 1vmin); font-family: Comfortaa, serif; font-weight: 400; margin-top: 10%; margin-bottom: 5%;">
-            city
+        <div id="city" class="weather-info">city</div>
+        <div class="weather-info">Temperature:</div>
+        <div id="temperature" class="weather-info">temp&nbsp;&#8451;</div>
+        <div class="weather-info weather-row">
+            <span>Weather:</span>
+            <img id="weatherIcon" src="https://openweathermap.org/img/w/icon.png" alt="Weather Icon">
         </div>
-        <div style="color: black; font-size: 3vw; font-family: Comfortaa, serif; font-weight: 400; margin-bottom: 2%;">
-            Temperature:
-        </div>
-        <div id="temperature"
-             style="color: black; font-size: calc(2.5vw + 1vmin); font-family: Comfortaa, serif; font-weight: 400; margin-bottom: 5%;">
-            temp
-        </div>
-        <div style="color: black; font-size: 3vw; font-family: Comfortaa, serif; font-weight: 400; margin-bottom: 2%;">
-            Weather:
-        </div>
-        <div id="weatherDescription"
-             style="color: black; font-size: calc(2.5vw + 1vmin); font-family: Comfortaa, serif; font-weight: 400; margin-bottom: 5%;">
-            data
-        </div>
+        <div id="weatherDescription" class="weather-info">data</div>
     </div>
 </div>
 
-<script src="script.js"></script>
+<script>
+    let city = "";
+    let temperature = 1.0;
+    let weatherDescription = "";
+
+    temperature = temperature.toFixed(1);
+
+    document.getElementById("city").innerText = decodeURIComponent(city);
+    document.getElementById("temperature").innerText = temperature;
+    document.getElementById("weatherDescription").innerText = weatherDescription;
+
+    function adjustFontSize() {
+        let cityName = document.getElementById("city");
+        let windowWidth = window.innerWidth;
+
+        let baseFontSizeCity = 3;
+        let baseFontSizeTemperature = 2.5;
+
+        let vwUnit = windowWidth / 100;
+
+        let cityFontSize = baseFontSizeCity + vwUnit;
+
+        let temperatureFontSize = baseFontSizeTemperature + vwUnit;
+
+        cityName.style.fontSize = "calc(" + cityFontSize + "px + 1vmin)";
+        document.getElementById("temperature").style.fontSize = "calc(" + temperatureFontSize + "px + 1vmin)";
+    }
+
+    adjustFontSize();
+    window.addEventListener('resize', adjustFontSize);
+
+</script>
 </body>
 </html>
