@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        body {
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            background-color: #fff3e2;
+            font-size: 16px;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        #cityInput, button[type="submit"] {
+            width: 100%;
+            padding: 5vw;
+            font-size: 5vw;
+            border-radius: 20px;
+            margin-bottom: 5vw;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            border: 2px solid black;
+            background-color: #b3ffb3;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #66ff66;
+        }
+
+        @media (min-width: 768px) {
+            .form-container {
+                padding: 0;
+            }
+
+            #cityInput, button[type="submit"] {
+                padding: 20px;
+                font-size: 30px;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <form action="/get-weather" method="post">
+        <label for="cityInput"></label><input type="text" name="city" id="cityInput" placeholder="Enter city name" required>
+        <br><br>
+        <button type="submit">Forecast</button>
+    </form>
+</div>
+</body>
+</html>
