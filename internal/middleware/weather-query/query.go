@@ -31,7 +31,7 @@ func Query(city string) (ws.WeatherData, error) {
 	}(resp.Body)
 
 	if resp.StatusCode != http.StatusOK {
-		return ws.WeatherData{}, fmt.Errorf("API request failed with status code: %d", resp.StatusCode)
+		return ws.WeatherData{}, fmt.Errorf("city request failed with exit code: %d WRONG CITY NAME", resp.StatusCode)
 	}
 
 	var data ws.WeatherData

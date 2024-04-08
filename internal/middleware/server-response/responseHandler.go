@@ -37,6 +37,7 @@ func ResponseHandler(c echo.Context) error {
 	modFile = strings.ReplaceAll(modFile, "icon", data.Weather[0].Icon) // Добавлено для вывода иконки
 
 	modFile = strings.ReplaceAll(modFile, "bg.jpeg", "/static/bg.jpeg")
+	modFile = strings.ReplaceAll(modFile, "script.js", "/static/script.js")
 
 	return c.HTML(http.StatusOK, modFile)
 }
