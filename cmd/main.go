@@ -4,7 +4,8 @@ import (
 	"github.com/labstack/echo/v4"
 	"log"
 	"strconv"
-	h "weather-api/internal/middleware/server-response"
+
+	h "weather-api/internal/middleware/crud-handler"
 )
 
 var port = 8080
@@ -13,10 +14,12 @@ func main() {
 	e := echo.New()
 	e.Static("/static", "client-part")
 
-	e.GET("/weather/:city", h.ResponseHandler)
+	e.GET("/menu", h.MenuHandler)
+	e.GET("/weather/:city", h.WeatherHandler)
+	e.POST("/get-weather", h.GetWeatherHandler)
 
 	err := e.Start(":" + strconv.Itoa(port))
 	if err != nil {
-		log.Fatalf("Error starting server on port %d: %s", port, err)
+		log.Fatalf("Ошибка запуска сервера на порту %d: %s", port, err)
 	}
 }
