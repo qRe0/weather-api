@@ -2,6 +2,7 @@ package weather_query
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -22,13 +23,16 @@ func Query(city string) (ws.WeatherData, error) {
 	if err != nil {
 		return ws.WeatherData{}, err
 	}
-
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()
 		if err != nil {
 			log.Fatalf("Error closing response body: %s\n", err)
 		}
 	}(resp.Body)
+
+	if resp.StatusCode != http.StatusOK {
+		return ws.WeatherData{}, fmt.Errorf("API request failed with status code: %d", resp.StatusCode)
+	}
 
 	var data ws.WeatherData
 	if err := json.NewDecoder(resp.Body).Decode(&data); err != nil {

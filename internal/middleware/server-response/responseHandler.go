@@ -16,6 +16,11 @@ func ResponseHandler(c echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 	}
+
+	if len(data.Weather) == 0 {
+		return echo.NewHTTPError(http.StatusNotFound, "City not found")
+	}
+
 	data.Main.Temperature = conv.KelvinToCelsius(data.Main.Temperature)
 
 	baseFile, err := os.ReadFile("client-part/index.html")
