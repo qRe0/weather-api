@@ -8,14 +8,14 @@
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
 ## Overview
+This project is an application to show the weather forecast for the specified city. The work is performed by querying the corresponding site using API key. The project implements a client part with a menu interface for entering the city and a weather window interface for providing information. 
 
 ## Project structure
-```shell
-weather-api
+```shellweather-api
 ├── client-part
 │   ├── bg.jpeg
-│   └── index.html
-│   └── script.js
+│   ├── index.html
+│   └── menu.html
 ├── cmd
 │   └── main.go
 ├── internal
@@ -25,6 +25,8 @@ weather-api
 │   │   └── api-key-loader
 │   │       └── loadApiKey.go
 │   ├── middleware
+│   │   ├── crud-handler
+│   │   │   └── handler.go
 │   │   ├── server-response
 │   │   │   └── responseHandler.go
 │   │   └── weather-query
@@ -32,6 +34,7 @@ weather-api
 │   └── weather
 │       └── weather-struct
 │           └── weatherData.go
+├── LICENSE
 ├── pkg
 │   └── temperature-converter
 │       └── kelvin-to-celsius
@@ -40,3 +43,5 @@ weather-api
 ```
 
 ## Additional notes
+* [OpenWeatherMap](https://openweathermap.org/)
+* [Echo framework](https://echo.labstack.com/)
