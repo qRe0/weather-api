@@ -23,7 +23,7 @@ func ResponseHandler(c echo.Context) error {
 
 	data.Main.Temperature = conv.KelvinToCelsius(data.Main.Temperature)
 
-	baseFile, err := os.ReadFile("client-part/index.html")
+	baseFile, err := os.ReadFile("client-part/forecast.html")
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 	}

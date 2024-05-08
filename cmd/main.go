@@ -20,6 +20,6 @@ func main() {
 
 	err := e.Start(":" + strconv.Itoa(port))
 	if err != nil {
-		log.Fatalf("Ошибка запуска сервера на порту %d: %s", port, err)
+		log.Fatalf("Error launching server on port %d: %s", port, err)
 	}
 }
